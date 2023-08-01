@@ -17,8 +17,7 @@ loginRoute.get('/login', (req, res) => {
         userName: req.body.Fname,
         password: req.body.password
     }
-    res.send("sucess")
-    loginMiddleWare(loginData)
+    loginMiddleWare(loginData, res)
     
 })
 

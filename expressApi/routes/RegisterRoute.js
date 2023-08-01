@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import userTem  from '../htmlTemp.js';
 import incryptPassword from '../increyptPassword.js'
 import addNewUserToDataBase from '../dataBase/addNewUserToDataBase.js'
+import queryLoginDataBase from '../dataBase/queryDatabase.js';
 
 const registerationRoute = express.Router()
 const registerUserHtmlTem = userTem.registerUserHtmlTem
@@ -22,8 +23,15 @@ registerationRoute.get('/register', (req, res, next) => {
         email: req.body.email,
         password: incryptedPassword
     }
-    addNewUserToDataBase(userData)
-    res.send('ok succes')
+    const checkIfUserNameExist = await queryLoginDataBase(userData.name)
+    if(checkIfUserNameExist.length === 0){
+        addNewUserToDataBase(userData)
+        res.send('ok succes')
+    }else{
+        res.send('User Name Taken')
+    }
+    
+    
     
 
 })

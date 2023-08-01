@@ -57,4 +57,24 @@ const loginUserHtmlTem = `
 </html>
 `
 
-export default {registerUserHtmlTem, loginUserHtmlTem}
+const generateApiKeyTem = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <h1>ENTER YOUR INFO</h1>
+    <form action="/apikey" method="post">
+        <label for="submit">Click To Generate APiKey</label>
+        <button name="submit" type="submit">Submit</button>
+    </form>    
+</body>
+</html>
+`
+
+
+
+export default {registerUserHtmlTem, loginUserHtmlTem, generateApiKeyTem}
